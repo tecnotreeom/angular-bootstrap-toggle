@@ -235,7 +235,7 @@
                     });
                 }])
 
-        .directive('toggle', function () {
+        .directive('ttuiToggle', function () {
                 return {
                     restrict: 'E',
                     transclude: true,
@@ -249,7 +249,7 @@
                     scope: {
                         ngModel: '='
                     },
-                    require: ['toggle', 'ngModel'],
+                    require: ['ttuiToggle', 'ngModel'],
                     controller: 'ToggleController',
                     controllerAs: 'toggle',
                     compile: function (element, attrs, transclude) {

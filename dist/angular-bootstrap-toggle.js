@@ -98,12 +98,12 @@
                     angular.forEach( toggleConfigKeys, function (k, i) {
                         if (angular.isDefined($attrs[k])) {
                             /*
-                             if (i < toggleConfigKeys.length) {
-                             self[k] = $interpolate($attrs[k])($scope.$parent);
-                             } else {
-                             self[k] = $scope.$parent.$eval($attrs[k]);
-                             }
-                             */
+                            if (i < toggleConfigKeys.length) {
+                                self[k] = $interpolate($attrs[k])($scope.$parent);
+                            } else {
+                                self[k] = $scope.$parent.$eval($attrs[k]);
+                            }
+                            */
                             switch ( typeof toggleConfig[k] ) {
                                 case 'string':
                                     self[k] = $interpolate($attrs[k])($scope.$parent);
@@ -206,13 +206,13 @@
                     };
 
                     $scope.onSwitch = function (evt) {
-                        if (self.disabled) {    // prevent changing .$viewValue if .disabled == true
+                       if (self.disabled) {    // prevent changing .$viewValue if .disabled == true
                             return false;
-                        } else {
-                            ngModelCtrl.$setViewValue(!ngModelCtrl.$viewValue);
-                            ngModelCtrl.$render();
-                        }
-                        return true;
+                       } else {
+                           ngModelCtrl.$setViewValue(!ngModelCtrl.$viewValue);
+                           ngModelCtrl.$render();
+                       }
+                       return true;
                     };
 
                     // Watchable data attributes
@@ -235,21 +235,21 @@
                     });
                 }])
 
-        .directive('toggle', function () {
+        .directive('ttuiToggle', function () {
                 return {
                     restrict: 'E',
                     transclude: true,
                     template: '<div class="toggle btn" ng-class="wrapperClass" ng-style="wrapperStyle" ng-click="onSwitch($event)">' +
-                    '<div class="toggle-group">' +
-                    '<label class="btn" ng-class="onClass"></label>' +
-                    '<label class="btn active" ng-class="offClass"></label>' +
-                    '<span class="btn btn-default" ng-class="handleClass"></span>' +
-                    '</div>' +
-                    '</div>',
+                               '<div class="toggle-group">' +
+                                '<label class="btn" ng-class="onClass"></label>' +
+                                '<label class="btn active" ng-class="offClass"></label>' +
+                                '<span class="btn btn-default" ng-class="handleClass"></span>' +
+                               '</div>' +
+                              '</div>',
                     scope: {
                         ngModel: '='
                     },
-                    require: ['toggle', 'ngModel'],
+                    require: ['ttuiToggle', 'ngModel'],
                     controller: 'ToggleController',
                     controllerAs: 'toggle',
                     compile: function (element, attrs, transclude) {
